@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class BBDDTebeoteca {
+public class Conexion {
 
 	final private String driver = "com.mysql.cj.jdbc.Driver";
 	final private String host = "localhost";
@@ -14,7 +14,7 @@ public class BBDDTebeoteca {
 	private Statement statement;
 	private Connection connect;
 	
-	public BBDDTebeoteca () {
+	public Conexion () {
 		
 		try {
 			Class.forName(driver);

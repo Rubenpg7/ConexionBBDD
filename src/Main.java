@@ -4,15 +4,17 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		realizarEjemplo();
-
+		//realizarEjemplo();
+		TebeoDTO t = new TebeoDTO(1,"Titulo", 1, "Coleccion");
+		TebeoDAO tdao = new TebeoDAO();
+		tdao.crearTebeo(t);
 	}
 	
 	public static void realizarEjemplo() throws Exception {
 		
 		ResultSet resultSet = null;
 		
-		BBDDTebeoteca conector = new BBDDTebeoteca();
+		Conexion conector = new Conexion();
 		
 		try {
 
