@@ -1,43 +1,47 @@
-import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		//realizarEjemplo();
-		TebeoDTO t = new TebeoDTO(1,"Titulo", 1, "Coleccion");
+		Scanner sc;
+		
+		Integer isbn = 0, numero = 0;
+		String titulo = "", coleccion = "";
+		
 		TebeoDAO tdao = new TebeoDAO();
-		tdao.crearTebeo(t);
-	}
-	
-	public static void realizarEjemplo() throws Exception {
 		
-		ResultSet resultSet = null;
-		
-		Conexion conector = new Conexion();
+		tdao.verBBDD();
 		
 		try {
-
-			resultSet = conector.getStatement().executeQuery("select * from tebeo");
+			sc = new Scanner(System.in);
 			
-			while(resultSet.next()) {
+			System.out.println("Introduce el isbn");
+			isbn = sc.nextInt();
+			sc.nextLine();
+			
+			if(tdao.buscarTebeoIsbn(isbn) == 1) {
 				
-				for(int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
-					System.out.print(resultSet.getString(i) + " | ");
-				}
-				System.out.println("");
+				System.out.println("Introduce el titulo");
+				titulo = sc.nextLine();
+				
+				System.out.println("Introduce el numero");
+				numero = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("Introduce la coleccion");
+				coleccion = sc.nextLine();
+				
+				TebeoDTO t = new TebeoDTO(isbn, titulo, numero, coleccion);
+				tdao.crearTebeo(t);
+				
+				tdao.verBBDD();
 			}
-			
-		}catch (Exception e) {
-			System.out.println("Error al realizar la consulta " + e.getLocalizedMessage());
-		}finally {
-			try {
-				conector.cerrarConexion(resultSet, conector.getConnect(), conector.getStatement());
-			}catch (Exception e) {
-				System.out.println("Error al cerrar las conexiones " + e.getLocalizedMessage());
+			else {
+				System.out.println("El isbn ya existe");
 			}
+		}catch (Exception e){
+			System.out.println("Error al meter los datos");
 		}
-		
 	}
-
 }

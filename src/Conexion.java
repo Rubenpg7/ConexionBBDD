@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Conexion {
 
@@ -9,7 +10,7 @@ public class Conexion {
 	final private String host = "localhost";
 	final private String bbdd = "tebeoteca";
 	final private String user = "root";
-	final private String passwd = "admin";
+	final private String passwd = "Admin123"; //admin --> contraseña para clase
 	
 	private Statement statement;
 	private Connection connect;

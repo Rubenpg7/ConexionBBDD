@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class TebeoDTO {
 
 	private int isbn;
