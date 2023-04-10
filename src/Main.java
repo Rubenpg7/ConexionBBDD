@@ -11,7 +11,11 @@ public class Main {
 		
 		TebeoDAO tdao = new TebeoDAO();
 		
-		tdao.verBBDD();
+		tdao.verBBDD(null);
+		for(TebeoDTO tb : tdao.getColeccion()) {
+			System.out.println(tb.getTitulo());
+			
+		}
 		
 		try {
 			sc = new Scanner(System.in);
@@ -35,7 +39,7 @@ public class Main {
 				TebeoDTO t = new TebeoDTO(isbn, titulo, numero, coleccion);
 				tdao.crearTebeo(t);
 				
-				tdao.verBBDD();
+				tdao.verBBDD(null);
 			}
 			else {
 				System.out.println("El isbn ya existe");

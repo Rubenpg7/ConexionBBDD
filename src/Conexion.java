@@ -10,7 +10,7 @@ public class Conexion {
 	final private String host = "localhost";
 	final private String bbdd = "tebeoteca";
 	final private String user = "root";
-	final private String passwd = "Admin123"; //admin --> contraseña para clase
+	final private String passwd = "admin"; //admin --> contraseña para clase / Admin123 --> contraseña para casa
 	
 	private Statement statement;
 	private Connection connect;
